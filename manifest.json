@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Udemy Translator",
+  "version": "1.0",
+  "description": "Translates content on Udemy courses",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "webRequest",
+    "storage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js" // Use service worker for background scripts
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.udemy.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  // "web_accessible_resources": [
+  //   {
+  //     "matches": ["<all_urls>"]
+  //   }
+  // ],
+  "icons": {}
+}

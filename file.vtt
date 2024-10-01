@@ -1,0 +1,285 @@
+00:00.080 --> 00:06.290
+Giống như với call, tôi có thể cung cấp các đối số cho bind để nó truyền chúng đến hàm mới.
+
+00:06.290 --> 00:08.360
+Tôi có thể ràng buộc vĩnh viễn các đối số.
+
+00:08.360 --> 00:12.370
+Tôi có thể tích hợp chúng vào một hàm giống như cách tôi tích hợp ngữ cảnh.
+
+00:12.380 --> 00:15.080
+Giá trị của this tôi có thể tích hợp vào các đối số.
+
+00:15.320 --> 00:17.570
+Đây là một ví dụ rất đơn giản.
+
+00:17.570 --> 00:20.750
+Tôi có một hàm gọi là sales tax hoặc apply sales tax.
+
+00:20.750 --> 00:26.990
+Nó nhận một thuế suất và một giá, sau đó trả về giá cộng với thuế.
+
+00:26.990 --> 00:27.380
+Đúng rồi.
+
+00:27.380 --> 00:37.910
+Nếu tôi chạy apply sales tax ở đây, giả sử đó là thuế suất 0.005.
+
+00:37.910 --> 00:41.210
+Và giá là $240.
+
+00:41.990 --> 00:45.260
+Nó trả về cho tôi 241.2.
+
+00:45.290 --> 00:45.520
+Đúng rồi.
+
+00:45.530 --> 00:47.810
+240 cộng với thuế.
+
+00:47.810 --> 00:49.010
+Đơn giản thôi.
+
+00:49.610 --> 00:57.620
+Tôi có thể sử dụng bind ở đây để tạo một bản sao của hàm này, trong đó thuế suất được ràng buộc với thuế suất của California
+
+00:57.620 --> 01:01.520
+hoặc thuế suất của Texas, hoặc một số thuế suất mà tôi tự đặt ra.
+
+01:01.910 --> 01:08.420
+Như bạn thấy ở đây, tôi có thể làm apply sales tax.bind và tôi có thể truyền null.
+
+01:08.450 --> 01:12.440
+Điều này về cơ bản có nghĩa là tôi không quan tâm giá trị của this là gì, chỉ cần bỏ qua nó.
+
+01:12.890 --> 01:18.980
+Tôi sẽ không ràng buộc giá trị cho this, nhưng tôi sẽ ràng buộc giá trị cho đối số đầu tiên được gọi là tax rate.
+
+01:20.710 --> 01:22.630
+Để tôi cho bạn xem điều đó trong thực tế.
+
+01:24.050 --> 01:24.670
+Áp dụng.
+
+01:24.680 --> 01:32.390
+Thuế bán hàng của California hoặc thuế bán hàng CA sẽ là một bản sao của apply sales tax có giá trị này được tích hợp vĩnh viễn
+
+01:32.390 --> 01:36.020
+hoặc có giá trị này được tích hợp cho tax rate.
+
+01:36.140 --> 01:41.990
+Vậy đối số đầu tiên này lại là thứ chúng ta đã sử dụng trong video trước để đặt giá trị của this hoặc ngữ cảnh
+
+01:41.990 --> 01:43.520
+mà hàm được gọi trong đó.
+
+01:44.140 --> 01:49.360
+Bất kỳ đối số bổ sung nào cũng sẽ được ràng buộc làm đối số trong bản sao.
+
+01:49.600 --> 01:51.940
+Có lẽ tôi sẽ làm hai cái này.
+
+01:52.450 --> 01:55.780
+Và tôi không biết liệu đây có phải là thực tế không.
+
+01:56.110 --> 01:58.450
+Tôi nghĩ Montana không có thuế bán hàng.
+
+01:58.450 --> 02:02.230
+Vì vậy, tôi sẽ tích hợp giá trị 0 cho tax rate.
+
+02:03.270 --> 02:11.220
+Được rồi, điều này tạo ra cho tôi hai bản sao của hàm apply sales tax, một bản có 0.0725 được tích hợp làm
+
+02:11.490 --> 02:12.210
+thuế suất.
+
+02:12.240 --> 02:14.220
+Bản kia có 0 tích hợp.
+
+02:14.220 --> 02:15.540
+Vậy chúng ta hãy kiểm tra nó.
+
+02:15.540 --> 02:18.450
+Tôi sẽ gọi apply California sales tax.
+
+02:20.460 --> 02:25.370
+Và tôi sẽ truyền vào một giá $100, và tôi nhận được 107.25.
+
+02:25.380 --> 02:29.640
+Nếu tôi thay vào đó làm apply Montana sales tax, tôi chỉ nhận được $100.
+
+02:30.300 --> 02:32.370
+Đây là một nơi khác mà bạn sẽ thấy mọi người sử dụng.
+
+02:32.370 --> 02:34.860Bind chỉ để tích hợp một đối số.
+
+02:34.890 --> 02:38.100
+Tạo một bản sao mới của một hàm, bỏ qua thứ đầu tiên đó.
+
+02:38.100 --> 02:41.430
+Chúng tôi không thực sự quan tâm đến việc ràng buộc ngữ cảnh, chỉ cần tích hợp đối số này.
+
+02:41.430 --> 02:42.810
+Và tôi cũng có thể làm cả hai.
+
+02:42.810 --> 02:46.610
+Tôi có thể ràng buộc giá trị cho this, nhưng tôi không thực sự sử dụng this trong hàm này.
+
+02:46.630 --> 02:49.380
+Không thực sự quan trọng ngữ cảnh mà hàm này được gọi trong.
+
+02:49.920 --> 02:52.470
+Vậy để tôi cho bạn xem một ví dụ rất đơn giản.
+
+02:52.470 --> 02:56.100
+Hãy tạo một hàm gọi là multiply.
+
+02:57.630 --> 03:04.440Multiply nhận hai số a và b và nó đơn giản trả về a nhân b.
+
+03:04.470 --> 03:06.270
+Một lần nữa, chúng ta đang giữ cho nó đơn giản.
+
+03:06.720 --> 03:13.320
+Nếu tôi muốn tạo một bản sao của hàm này mà luôn có a được đặt thành hai, có thể tôi sẽ gọi nó là double.
+
+03:13.830 --> 03:18.150
+Tất cả những gì tôi có thể làm hoặc tất cả những gì tôi cần làm là multiply.bind.
+
+03:18.360 --> 03:22.290
+Tôi không quan tâm ngữ cảnh là gì cho this, tôi không quan tâm.
+
+03:22.290 --> 03:29.490
+Nhưng sau đó tôi có thể cung cấp một danh sách các đối số sẽ được tích hợp vào hàm mới của tôi, và tôi sẽ tích hợp
+
+03:29.490 --> 03:31.560
+hai làm a.
+
+03:31.680 --> 03:37.230
+Vì vậy, về cơ bản nó tạo ra cho tôi một hàm trông giống như thế này, trong đó A luôn sẽ là hai.
+
+03:37.260 --> 03:39.780
+Cụ thể hơn, bạn có thể nghĩ về nó như trông giống như thế này.
+
+03:39.870 --> 03:41.130
+Nó muốn một đối số.
+
+03:41.160 --> 03:43.830
+Bây giờ A được đặt thành hai mọi lúc.
+
+03:45.260 --> 03:48.590
+Nó không hoàn toàn làm điều này, nhưng hãy nghĩ về nó như thế này.
+
+03:48.800 --> 03:55.760
+Tạo cho tôi một hàm gọi là double trong đó nó dựa trên hàm multiply, ngoại trừ luôn đặt A thành
+
+03:55.760 --> 03:56.450
+là hai.
+
+03:57.810 --> 03:58.860
+Và nó chỉ đi theo thứ tự.
+
+03:58.860 --> 04:02.960
+Vì vậy, nếu tôi truyền đối số khác này vào đây, giá trị của B sẽ được tích hợp thành hai.
+
+04:02.970 --> 04:06.090
+Nhưng tôi không thực sự muốn điều đó vì sau đó nó luôn sẽ trả về bốn.
+
+04:06.330 --> 04:09.300
+Vậy tại sao tôi không cũng tạo một hàm gọi là triple.
+
+04:11.070 --> 04:17.250
+Và nó sẽ là kết quả của việc gọi multiply.bind nơi tôi ràng buộc ba làm đối số đầu tiên tôi đang
+
+04:17.250 --> 04:19.470
+tích hợp ba.
+
+04:20.400 --> 04:24.870
+Và bây giờ nếu tôi gọi double(double(4)), chúng ta nhận được tám.
+
+04:25.200 --> 04:25.860double(10).
+
+04:25.890 --> 04:26.830
+Chúng ta nhận được 20.
+
+04:26.850 --> 04:30.690
+Nếu tôi gọi double(4, 4), chúng ta nhận được 12.
+
+04:30.720 --> 04:33.180triple(20), tôi nhận được 60.
+
+04:33.480 --> 04:35.310
+Tôi đoán tôi đã làm mười cho ví dụ này.
+
+04:35.310 --> 04:37.560
+Vì vậy, tôi sẽ chỉ khớp với nó và chúng ta nhận được 30.
+
+04:37.890 --> 04:45.600
+Vì vậy, nó vẫn đang sử dụng đối số này nhưng nó luôn ràng buộc thành a hoặc luôn ràng buộc ba thành a.
+
+04:46.050 --> 04:54.990
+Và chỉ để chứng minh, tôi sẽ tạo một hàm gọi là always nine sẽ là kết quả của việc gọi
+
+04:54.990 --> 04:56.430multiply.bind.
+
+04:56.580 --> 05:02.400
+Tôi không quan tâm đến đối số cho this cho ngữ cảnh, nhưng sau đó tôi sẽ luôn nhân ba và
+
+05:02.400 --> 05:02.730
+ba.
+
+05:02.730 --> 05:06.360
+Vì vậy, a sẽ là ba và b sẽ là ba bất kể điều gì.
+
+05:08.690 --> 05:08.980
+Tôi nhận được.
+
+05:08.990 --> 05:10.400
+Nein, nein, nein!
+
+05:11.320 --> 05:16.420
+Tôi có thể truyền đối số vào, nhưng chúng không làm gì vì hai cái này đã được nói đến.
+
+05:16.450 --> 05:19.390
+Ba sẽ được ràng buộc với a hoặc tích hợp thành a.
+
+05:19.420 --> 05:22.990
+Ba sẽ được tích hợp thành B sẽ luôn nhận được kết quả giống nhau.
+
+05:23.770 --> 05:25.720
+Vậy đó là một cách khác để sử dụng bind.
+
+05:25.750 --> 05:29.350
+Tôi vẫn chưa hiển thị bất cứ điều gì có vẻ thực sự hữu ích.
+
+05:29.530 --> 05:31.060
+Tôi đoán bạn có thể nói điều này là hữu ích.
+
+05:31.090 --> 05:33.370
+Bạn không cần phải định nghĩa lại multiply liên tục.
+
+05:33.430 --> 05:37.980
+Hãy tưởng tượng đây là một hàm phức tạp hơn và bạn cần các biến thể với một đối số được tích hợp.
+
+05:37.990 --> 05:43.210
+Nhưng sớm tôi sẽ chỉ ra một số ví dụ từ thế giới thực, làm việc với những thứ như người nghe sự kiện và
+
+05:43.210 --> 05:43.840
+thời gian chờ.
+
+05:43.840 --> 05:44.950
+Và điều đó đang đến.
+
+05:44.950 --> 05:48.060
+Nhưng đó là những điều cơ bản về cách phương thức bind hoạt động.
+
+05:48.070 --> 05:54.490
+Nó trả về một bản sao mới của một hàm mà chúng ta có thể ràng buộc giá trị cho this, giống như chúng ta đã thấy trước đó.
+
+05:54.520 --> 06:00.820
+Tôi có thể sử dụng nó để tạo cho tôi một bản sao của một hàm có giá trị cho ngữ cảnh được ràng buộc và luôn
+
+06:00.820 --> 06:02.170
+giống nhau hoặc cùng một lúc.
+
+06:02.170 --> 06:05.830
+Tôi có thể sử dụng nó để tích hợp các đối số vào một bản sao của một hàm.
